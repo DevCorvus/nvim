@@ -4,6 +4,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
 	"tsserver",
+	"clangd",
 	"rust_analyzer",
 })
 
@@ -69,6 +70,10 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.signature_help()
 	end, opts)
 end)
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
+require("lspconfig").clangd.setup({ capabilities = capabilities })
 
 lsp.setup()
 
