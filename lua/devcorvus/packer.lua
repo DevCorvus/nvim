@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
     })
 
     -- Git integration
-    use("kdheepak/lazygit.nvim")
+    use("tpope/vim-fugitive")
     use({
         "lewis6991/gitsigns.nvim",
         config = function()
