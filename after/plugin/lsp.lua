@@ -4,8 +4,9 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
 	"tsserver",
-	"clangd",
 	"rust_analyzer",
+	"gopls",
+	"clangd",
 })
 
 lsp.nvim_workspace()
