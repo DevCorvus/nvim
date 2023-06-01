@@ -94,6 +94,17 @@ return require("packer").startup(function(use)
     })
     use("nvim-treesitter/nvim-treesitter-context")
     use({
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require("lualine").setup({
+                options = {
+                    section_separators = "",
+                    component_separators = "",
+                },
+            })
+        end,
+    })
+    use({
         "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup()
