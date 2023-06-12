@@ -5,18 +5,24 @@ return require("packer").startup(function(use)
     -- Core
     use("nvim-lua/plenary.nvim")
 
-    -- Fuzzy finder
-    use({
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
-    })
-
-    -- Theme
+    -- Theme and icons
     use({
         "folke/tokyonight.nvim",
         config = function()
             vim.cmd("colorscheme tokyonight-night")
         end,
+    })
+    use({
+        "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("nvim-web-devicons").setup()
+        end,
+    })
+
+    -- Fuzzy finder
+    use({
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
     })
 
     -- Parser
