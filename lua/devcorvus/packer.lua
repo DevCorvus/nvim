@@ -85,7 +85,7 @@ return require("packer").startup(function(use)
     })
 
     -- Formatting and linting
-    use("jose-elias-alvarez/null-ls.nvim")
+    use("nvimdev/guard.nvim")
 
     -- Useful stuff
     use("nvim-tree/nvim-tree.lua")
