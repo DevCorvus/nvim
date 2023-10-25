@@ -25,7 +25,7 @@ return require("packer").startup(function(use)
     -- Fuzzy finder
     use({
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.x",
     })
 
     -- Parser
