@@ -1,7 +1,7 @@
 local ft = require("guard.filetype")
 
 ft("lua"):fmt("stylua")
-ft("typescript,javascript,typescriptreact,svelte,astro"):fmt("prettier")
+ft("typescript,javascript,typescriptreact,svelte,astro,html,css"):fmt("prettier")
 ft("python"):fmt("black")
 ft("go"):fmt("gofmt")
 ft("rust"):fmt("rustfmt")
