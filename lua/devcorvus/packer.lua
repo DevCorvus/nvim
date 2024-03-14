@@ -91,6 +91,16 @@ return require("packer").startup(function(use)
             "nvimdev/guard-collection",
         },
     })
+    use({
+        "laytan/tailwind-sorter.nvim",
+        requires = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+        config = function()
+            require("tailwind-sorter").setup({
+                on_save_enabled = true,
+            })
+        end,
+        run = "cd formatter && npm ci && npm run build",
+    })
 
     -- Useful stuff
     use("nvim-tree/nvim-tree.lua")
