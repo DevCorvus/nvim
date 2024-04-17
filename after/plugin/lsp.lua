@@ -6,6 +6,7 @@ lsp.ensure_installed({
     "tsserver",
     "rust_analyzer",
     "gopls",
+    "pyright",
     "jdtls",
     "clangd",
 })
