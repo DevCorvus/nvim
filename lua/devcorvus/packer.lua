@@ -105,10 +105,6 @@ return require("packer").startup(function(use)
     -- Useful stuff
     use("nvim-tree/nvim-tree.lua")
     use({
-        "akinsho/toggleterm.nvim",
-        tag = "*",
-    })
-    use({
         "folke/trouble.nvim",
         config = function()
             require("trouble").setup({
