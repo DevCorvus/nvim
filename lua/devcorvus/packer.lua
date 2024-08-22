@@ -85,12 +85,7 @@ return require("packer").startup(function(use)
     })
 
     -- Formatting and linting
-    use({
-        "nvimdev/guard.nvim",
-        requires = {
-            "nvimdev/guard-collection",
-        },
-    })
+    use("stevearc/conform.nvim")
     use({
         "laytan/tailwind-sorter.nvim",
         requires = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
