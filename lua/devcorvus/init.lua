@@ -1,6 +1,4 @@
-require("devcorvus.packer")
-require("devcorvus.set")
-require("devcorvus.remap")
+require("devcorvus.lazy")
 
 local augroup = vim.api.nvim_create_augroup
 local DevCorvusGroup = augroup("DevCorvus", {})
