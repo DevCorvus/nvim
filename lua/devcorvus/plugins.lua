@@ -2,6 +2,14 @@ return {
     -- Core
     "nvim-lua/plenary.nvim",
 
+    -- Package manager for neovim
+    {
+        "mason-org/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end
+    },
+
     -- Theme and icons
     {
         "folke/tokyonight.nvim",
@@ -43,39 +51,39 @@ return {
         end,
     },
 
-    -- La señora penelope (LSP)
+    -- Snippets
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v2.x",
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
+
+    -- LSP utils
+    {
+        "neovim/nvim-lspconfig", -- LSP config kickstarters
         dependencies = {
-            -- LSP Support
-            { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
-
-            -- Autocompletion
-            { "hrsh7th/nvim-cmp" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-nvim-lua" },
-
-            -- Snippets
-            { "L3MON4D3/LuaSnip" },
-            { "rafamadriz/friendly-snippets" },
+            {
+                "folke/lazydev.nvim", -- Vim global
+                ft = "lua",
+                opts = {
+                    library = {
+                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                    },
+                },
+            },
         },
     },
+    { "mason-org/mason-lspconfig.nvim" },
     {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("lsp_signature").setup({
-                hint_prefix = "SIG ",
-            })
-        end,
+        "Saghen/blink.cmp", -- Autocompletion
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = 'v0.*',
+        opts = {
+            keymap = { preset = "default" },
+            signature = { enabled = true }
+        }
     },
     {
-        "antosha417/nvim-lsp-file-operations",
+        "antosha417/nvim-lsp-file-operations", -- Support for file operations
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-tree.lua",
@@ -85,10 +93,8 @@ return {
         end,
     },
     {
-        "simrat39/rust-tools.nvim",
-        config = function()
-            require("rust-tools").setup()
-        end,
+        'mrcjkb/rustaceanvim',
+        lazy = false,
     },
 
     -- Formatting and linting
