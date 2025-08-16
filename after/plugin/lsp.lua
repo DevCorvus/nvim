@@ -12,36 +12,48 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
--- Vue support
-local lspconfig = require("lspconfig")
-lspconfig.volar.setup({
-    init_options = {
-        vue = {
-            hybridMode = false,
-        },
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "vue_ls",
+        "vtsls",
+        "pyright",
+        "gopls",
+    },
+    automatic_enable = {
+        exclude = {
+            "vue_ls",
+            "vtsls",
+        }
     }
 })
-lspconfig.ts_ls.setup({
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = vim.fn.stdpath("data") ..
-                    "/mason/packages" .. "/vue-language-server/node_modules/@vue/language-server",
-                languages = { 'vue' }
+
+-- Vue support
+local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
+    '/vue-language-server' .. '/node_modules/@vue/language-server'
+
+local vue_plugin = {
+    name = '@vue/typescript-plugin',
+    location = vue_language_server_path,
+    languages = { 'vue' },
+    configNamespace = 'typescript',
+}
+
+local vtsls_config = {
+    settings = {
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    vue_plugin,
+                },
             },
         },
     },
-})
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+}
 
-require("mason-lspconfig").setup({
-    automatic_enable = true, -- Automatic call to vim.lsp.enable()
-    ensure_installed = {
-        "lua_ls",
-        "ts_ls",
-        "volar",
-        "pyright",
-        "gopls",
-        "rust_analyzer",
-    },
-})
+local vue_ls_config = {} -- Because it's using mason-lspconfig
+
+vim.lsp.config("vtsls", vtsls_config)
+vim.lsp.config("vue_ls", vue_ls_config)
+vim.lsp.enable({ "vtsls", "vue_ls" })
