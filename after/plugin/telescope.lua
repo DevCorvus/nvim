@@ -5,9 +5,9 @@ telescope.setup({
     defaults = {
         file_ignore_patterns = {
             ".git/",
-            "node_modules",
-            "build",
-            "dist",
+            "^node_modules/",
+            "^build/",
+            "^dist/",
             "%.lock",
         },
         layout_config = {
