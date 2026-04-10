@@ -36,10 +36,6 @@ return {
     -- Parser
     {
         "nvim-treesitter/nvim-treesitter",
-        build = function()
-            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-            ts_update()
-        end,
     },
 
     -- Git integration
@@ -156,12 +152,6 @@ return {
     "tpope/vim-surround",
     "tpope/vim-commentary",
     "folke/todo-comments.nvim",
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-    },
     {
         "RRethy/vim-illuminate",
         config = function()
