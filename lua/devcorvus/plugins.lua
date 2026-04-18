@@ -14,9 +14,7 @@ return {
     {
         "folke/tokyonight.nvim",
         config = function()
-            require("tokyonight").setup({
-                transparent = true,
-            })
+            require("tokyonight").setup({})
             vim.cmd("colorscheme tokyonight-night")
         end,
     },
@@ -109,11 +107,8 @@ return {
     "nvim-tree/nvim-tree.lua",
     {
         "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup({
-                icons = false,
-            })
-        end,
+        opts = {},
+        cmd = "Trouble"
     },
     "nvim-treesitter/nvim-treesitter-context",
     {
