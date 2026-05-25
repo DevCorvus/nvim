@@ -130,7 +130,6 @@ return {
         end,
     },
     "theprimeagen/harpoon",
-    "theprimeagen/refactoring.nvim",
     {
         "windwp/nvim-autopairs",
         config = function()
